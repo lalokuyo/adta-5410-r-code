@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Eduardo Banuelos Perez">
+
+<title>ADTA 5410 by Levent Bulut, Week 2 Lab</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Week 2 Assignment_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Week 2 Assignment_files/libs/quarto-html/quarto.js"></script>
+<script src="Week 2 Assignment_files/libs/quarto-html/popper.min.js"></script>
+<script src="Week 2 Assignment_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Week 2 Assignment_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Week 2 Assignment_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Week 2 Assignment_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Week 2 Assignment_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Week 2 Assignment_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Week 2 Assignment_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ADTA 5410 by Levent Bulut, Week 2 Lab</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Eduardo Banuelos Perez </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="general-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="general-instructions">General Instructions</h2>
+<ol type="1">
+<li><p>Please note that this Quarto document constitutes 10% of your weekly R Lab assignment grade. The remaining 90% of your grade is determined by your answers to questions in Canvas. Be sure to read each question in Canvas carefully and provide complete and accurate answers.</p></li>
+<li><p>You can create a new folder for this lab assignment and store this Quarto document and the provided data set in the same folder you just created.</p></li>
+<li><p>The first code chunk installs certain R packages that might be useful to answer some of the questions.</p></li>
+<li><p>Unless instructed otherwise, you can choose any R package you want to answer the questions. You are not limited to using the packages listed in this Quarto template.</p></li>
+<li><p>Be sure to include the code that produces each answer, and make sure that your code and output are visible in your knitted HTML document.</p></li>
+<li><p>When you are finished, knit your Quarto document to an HTML document and save it in the folder you created in step 2.</p></li>
+<li><p>Submit your assignment by answering each question in Canvas and uploading the knitted HTML document to the designated course portal in Canvas before the due date and time.</p></li>
+</ol>
+<div class="cell">
+
+</div>
+</section>
+<section id="brief-information-to-help-you-write-your-codes-for-each-question" class="level2">
+<h2 class="anchored" data-anchor-id="brief-information-to-help-you-write-your-codes-for-each-question">Brief information to help you write your codes for each question</h2>
+<ul>
+<li><p>In this lab assignment, you will first conduct exploratory data analysis, then use multiple linear regression method to predict your variable of interest. Also, you will check the model assumptions, check for outliers and influential factors, and finally do predictions.</p></li>
+<li><p>We have state level census data on various socio-economic and demographic data called <strong>mydata</strong>. The data consists of the following variables:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mydata<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"Data_RLab2.csv"</span>, <span class="at">head=</span>T)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mydata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "State"                       "OwnComputer"                
+ [3] "CommutePublicTransport"      "TotalPopulation"            
+ [5] "MedianAge"                   "WithCashAssistanceIncome"   
+ [7] "MeanSocialSecurityIcnome"    "SupplementarySecurityIncome"
+ [9] "WhiteOnly"                   "Latinos"                    
+[11] "Asians"                      "AfricanAmerican"            
+[13] "Income100K.150K"             "Income75K.100K"             
+[15] "Income50K.75K"               "Income35K.50K"              
+[17] "Income25K.35K"               "PovertyRate"                </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(mydata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 52
+Columns: 18
+$ State                       &lt;chr&gt; "Minnesota", "Mississippi", "Missouri", "M…
+$ OwnComputer                 &lt;dbl&gt; 90.3, 81.5, 87.3, 87.3, 88.5, 91.2, 92.2, …
+$ CommutePublicTransport      &lt;dbl&gt; 198984.888, 8966.286, 85260.868, 8333.856,…
+$ TotalPopulation             &lt;int&gt; 5527358, 2988762, 6090062, 1041732, 190476…
+$ MedianAge                   &lt;dbl&gt; 37.9, 37.2, 38.5, 39.8, 36.4, 37.9, 42.7, …
+$ WithCashAssistanceIncome    &lt;dbl&gt; 3.4, 2.2, 1.9, 2.2, 1.9, 3.0, 2.5, 2.1, 2.…
+$ MeanSocialSecurityIcnome    &lt;int&gt; 20192, 17667, 19054, 18696, 19673, 19141, …
+$ SupplementarySecurityIncome &lt;dbl&gt; 4.2, 7.9, 5.5, 4.4, 3.9, 4.1, 4.8, 4.4, 6.…
+$ WhiteOnly                   &lt;dbl&gt; 80.3, 56.8, 79.6, 86.3, 79.4, 49.9, 90.4, …
+$ Latinos                     &lt;dbl&gt; 0.1, 0.1, 0.1, 0.1, 0.3, 1.0, 0.2, 1.0, 0.…
+$ Asians                      &lt;dbl&gt; 1.2, 1.2, 2.5, 1.3, 2.9, 10.1, 3.4, 10.2, …
+$ AfricanAmerican             &lt;dbl&gt; 7.4, 38.4, 12.8, 1.0, 5.9, 10.6, 2.2, 14.8…
+$ Income100K.150K             &lt;dbl&gt; 17.2, 10.4, 13.0, 12.6, 15.1, 14.1, 18.5, …
+$ Income75K.100K              &lt;dbl&gt; 14.0, 11.2, 12.5, 12.2, 13.7, 13.4, 14.0, …
+$ Income50K.75K               &lt;dbl&gt; 18.0, 16.9, 18.6, 19.1, 19.3, 19.1, 17.5, …
+$ Income35K.50K               &lt;dbl&gt; 12.1, 14.1, 14.4, 14.4, 13.8, 14.1, 10.9, …
+$ Income25K.35K               &lt;dbl&gt; 8.2, 11.4, 10.6, 11.1, 9.8, 10.1, 7.9, 7.1…
+$ PovertyRate                 &lt;dbl&gt; 10.1, 20.8, 14.2, 13.7, 11.6, 13.7, 7.9, 1…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(mydata) <span class="sc">%&gt;%</span> <span class="fu">colSums</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      State                 OwnComputer 
+                          0                           0 
+     CommutePublicTransport             TotalPopulation 
+                          0                           0 
+                  MedianAge    WithCashAssistanceIncome 
+                          0                           0 
+   MeanSocialSecurityIcnome SupplementarySecurityIncome 
+                          0                           0 
+                  WhiteOnly                     Latinos 
+                          0                           0 
+                     Asians             AfricanAmerican 
+                          0                           0 
+            Income100K.150K              Income75K.100K 
+                          0                           0 
+              Income50K.75K               Income35K.50K 
+                          0                           0 
+              Income25K.35K                 PovertyRate 
+                          0                           0 </code></pre>
+</div>
+</div>
+<ul>
+<li>There are 52 observations and 18variables in the data. Some variables are presented in percentage points as a fraction of the total population. Below is a snapshot of our data.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 8%">
+<col style="width: 5%">
+<col style="width: 3%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">State</th>
+<th style="text-align: right;">OwnComputer</th>
+<th style="text-align: right;">CommutePublicTransport</th>
+<th style="text-align: right;">TotalPopulation</th>
+<th style="text-align: right;">MedianAge</th>
+<th style="text-align: right;">WithCashAssistanceIncome</th>
+<th style="text-align: right;">MeanSocialSecurityIcnome</th>
+<th style="text-align: right;">SupplementarySecurityIncome</th>
+<th style="text-align: right;">WhiteOnly</th>
+<th style="text-align: right;">Latinos</th>
+<th style="text-align: right;">Asians</th>
+<th style="text-align: right;">AfricanAmerican</th>
+<th style="text-align: right;">Income100K.150K</th>
+<th style="text-align: right;">Income75K.100K</th>
+<th style="text-align: right;">Income50K.75K</th>
+<th style="text-align: right;">Income35K.50K</th>
+<th style="text-align: right;">Income25K.35K</th>
+<th style="text-align: right;">PovertyRate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Minnesota</td>
+<td style="text-align: right;">90.3</td>
+<td style="text-align: right;">198984.888</td>
+<td style="text-align: right;">5527358</td>
+<td style="text-align: right;">37.9</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">20192</td>
+<td style="text-align: right;">4.2</td>
+<td style="text-align: right;">80.3</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">1.2</td>
+<td style="text-align: right;">7.4</td>
+<td style="text-align: right;">17.2</td>
+<td style="text-align: right;">14.0</td>
+<td style="text-align: right;">18.0</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: right;">8.2</td>
+<td style="text-align: right;">10.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mississippi</td>
+<td style="text-align: right;">81.5</td>
+<td style="text-align: right;">8966.286</td>
+<td style="text-align: right;">2988762</td>
+<td style="text-align: right;">37.2</td>
+<td style="text-align: right;">2.2</td>
+<td style="text-align: right;">17667</td>
+<td style="text-align: right;">7.9</td>
+<td style="text-align: right;">56.8</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">1.2</td>
+<td style="text-align: right;">38.4</td>
+<td style="text-align: right;">10.4</td>
+<td style="text-align: right;">11.2</td>
+<td style="text-align: right;">16.9</td>
+<td style="text-align: right;">14.1</td>
+<td style="text-align: right;">11.4</td>
+<td style="text-align: right;">20.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Missouri</td>
+<td style="text-align: right;">87.3</td>
+<td style="text-align: right;">85260.868</td>
+<td style="text-align: right;">6090062</td>
+<td style="text-align: right;">38.5</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">19054</td>
+<td style="text-align: right;">5.5</td>
+<td style="text-align: right;">79.6</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">12.8</td>
+<td style="text-align: right;">13.0</td>
+<td style="text-align: right;">12.5</td>
+<td style="text-align: right;">18.6</td>
+<td style="text-align: right;">14.4</td>
+<td style="text-align: right;">10.6</td>
+<td style="text-align: right;">14.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Montana</td>
+<td style="text-align: right;">87.3</td>
+<td style="text-align: right;">8333.856</td>
+<td style="text-align: right;">1041732</td>
+<td style="text-align: right;">39.8</td>
+<td style="text-align: right;">2.2</td>
+<td style="text-align: right;">18696</td>
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">86.3</td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">12.6</td>
+<td style="text-align: right;">12.2</td>
+<td style="text-align: right;">19.1</td>
+<td style="text-align: right;">14.4</td>
+<td style="text-align: right;">11.1</td>
+<td style="text-align: right;">13.7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: right;">88.5</td>
+<td style="text-align: right;">13333.320</td>
+<td style="text-align: right;">1904760</td>
+<td style="text-align: right;">36.4</td>
+<td style="text-align: right;">1.9</td>
+<td style="text-align: right;">19673</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">79.4</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">5.9</td>
+<td style="text-align: right;">15.1</td>
+<td style="text-align: right;">13.7</td>
+<td style="text-align: right;">19.3</td>
+<td style="text-align: right;">13.8</td>
+<td style="text-align: right;">9.8</td>
+<td style="text-align: right;">11.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nevada</td>
+<td style="text-align: right;">91.2</td>
+<td style="text-align: right;">99376.866</td>
+<td style="text-align: right;">2922849</td>
+<td style="text-align: right;">37.9</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">19141</td>
+<td style="text-align: right;">4.1</td>
+<td style="text-align: right;">49.9</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">10.1</td>
+<td style="text-align: right;">10.6</td>
+<td style="text-align: right;">14.1</td>
+<td style="text-align: right;">13.4</td>
+<td style="text-align: right;">19.1</td>
+<td style="text-align: right;">14.1</td>
+<td style="text-align: right;">10.1</td>
+<td style="text-align: right;">13.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>Our target variable is <strong>OwnComputer</strong>, the percentage of people who own a computer. It may not be an interesting question, yet, in this lab assignment, we will try to find the factors that determine our target variable.</p></li>
+<li><p><strong>model1</strong> will be fit to <strong>mydata</strong> and it has the following predictors: <strong>Asians</strong>, <strong>PovertyRate</strong>, and <strong>Income100K.150K</strong></p></li>
+</ul>
+<p><span class="math inline">\(Model~~ 1: OwnComputer = \beta_{0}+\beta_{1}Asians+\beta_{2}PovertyRate+\beta_{3}Income100K.150K +\epsilon\)</span></p>
+<ul>
+<li><p><strong>Cook’s distance</strong> is a commonly used measure to identify influential points that have a large impact on the regression model. In this lab assignment, use a threshold Cook’s Distance of 1 to identify the row numbers of any outlier and enter your answers in Canvas.</p></li>
+<li><p>Filter out the two observations in <strong>mydata</strong> that have a Cook’s Distance greater than 1, and create a new dataset named <strong>mydata1a</strong> that excludes these outliers.</p></li>
+<li><p><strong>model1a</strong> will be fit to <strong>mydata1a</strong> and it has the following predictors: <strong>Asians</strong>, <strong>PovertyRate</strong>, and <strong>Income100K.150K</strong></p></li>
+<li><p><strong>model2</strong> will be fit to <strong>mydata1a</strong> and it has the following predictors: <strong>Asians</strong>, <strong>PovertyRate</strong>, <strong>Income100K.150K, Income25K.35K, SupplementarySecurityIncome, and WhiteOnly.</strong></p></li>
+<li><p><span class="math inline">\(Model ~~2: OwnComputer=\beta_{0}+\beta_{1}Asians+\beta_{2}{PovertyRate}+\beta_{3}Income100K.150K +\beta_{4}Income25K.35K+\beta_{5}SupplementarySecurityIncome+\beta_{6}WhiteOnly+\epsilon\)</span></p></li>
+<li><p>Multicollinearity occurs when two or more independent variables in a regression model are highly correlated, which can result in unstable and unreliable estimates of the regression coefficients. We can check for multicollinearity by calculating the variance inflation factor (VIF). Any VIF value above 10 can be considered as an evidence of multi-collinearity.</p></li>
+<li><p>To construct <strong>model3</strong>, we exclude all predictors from <strong>model2</strong> that have a VIF value greater than 10.</p></li>
+<li><p>If you come across any instructions in this QMD file or a question in Canvas that you find confusing or unclear, please post your related questions in the ‘<strong>Week 2 Questions in here!</strong>’ discussion forum.</p></li>
+</ul>
+</section>
+<section id="your-code-for-question-1" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-question-1">Your code for Question 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#cor(mydata$Asians, mydata$OwnComputer, method = "pearson")</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#cor(mydata$PovertyRate, mydata$OwnComputer, method = "pearson")</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#cor(mydata$Income100K.150K, mydata$OwnComputer, method = "pearson")</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#  Matrix</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># mydata.cor = cor(mydata[,2:18], method = c("spearman"))</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># round(mydata.cor, 2)</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ggcorr(mydata)</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>mydata_numeric <span class="ot">&lt;-</span> mydata <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>State)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#mydata_numeric</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Raw Correlation matrix</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>mydata <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>State) <span class="sc">%&gt;%</span> <span class="fu">cor</span>() <span class="ot">-&gt;</span> mydata_correl</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#mydata_correl</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Vector Correlation matrix</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>OwnComputer_cors <span class="ot">&lt;-</span> mydata_correl[,<span class="dv">1</span>]</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#OwnComputer_cors</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation with Lares Library</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="fu">corr_var</span>(mydata_numeric,</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>         OwnComputer, <span class="at">top=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Week-2-Assignment_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GGPLOT Visualizations</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>mydata_numeric <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SupplementarySecurityIncome,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y =</span> OwnComputer)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Week-2-Assignment_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mydata_numeric <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Income25K<span class="fl">.35</span>K,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">y =</span> OwnComputer)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Week-2-Assignment_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ggcorr(mydata_correl)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="your-code-for-question-2" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-question-2">Your code for Question 2</h2>
+<p><span class="math inline">\(Model~~ 1: OwnComputer = \beta_{0}+\beta_{1}Asians+\beta_{2}PovertyRate+\beta_{3}Income100K.150K +\epsilon\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fit regression model</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(OwnComputer<span class="sc">~</span>Asians <span class="sc">+</span> PovertyRate <span class="sc">+</span> Income100K<span class="fl">.150</span>K, <span class="at">data=</span>mydata_numeric)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate residual standard error</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">deviance</span>(model1)<span class="sc">/</span><span class="fu">df.residual</span>(model1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.145931</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = OwnComputer ~ Asians + PovertyRate + Income100K.150K, 
+    data = mydata_numeric)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.6545 -1.0858 -0.0344  1.0583  4.3388 
+
+Coefficients:
+                Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)     64.17600    4.92178  13.039  &lt; 2e-16 ***
+Asians          -0.03232    0.04379  -0.738   0.4641    
+PovertyRate      0.42075    0.12223   3.442   0.0012 ** 
+Income100K.150K  1.27555    0.23524   5.422 1.89e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.146 on 48 degrees of freedom
+Multiple R-squared:  0.4721,    Adjusted R-squared:  0.4391 
+F-statistic: 14.31 on 3 and 48 DF,  p-value: 8.663e-07</code></pre>
+</div>
+</div>
+</section>
+<section id="your-code-for-question-3" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-question-3">Your code for Question 3</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = OwnComputer ~ Asians + PovertyRate + Income100K.150K, 
+    data = mydata_numeric)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.6545 -1.0858 -0.0344  1.0583  4.3388 
+
+Coefficients:
+                Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)     64.17600    4.92178  13.039  &lt; 2e-16 ***
+Asians          -0.03232    0.04379  -0.738   0.4641    
+PovertyRate      0.42075    0.12223   3.442   0.0012 ** 
+Income100K.150K  1.27555    0.23524   5.422 1.89e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.146 on 48 degrees of freedom
+Multiple R-squared:  0.4721,    Adjusted R-squared:  0.4391 
+F-statistic: 14.31 on 3 and 48 DF,  p-value: 8.663e-07</code></pre>
+</div>
+</div>
+</section>
+<section id="your-code-for-question-4" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-question-4">Your code for Question 4</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Model_Cook<span class="ot">&lt;-</span><span class="fu">cooks.distance</span>(model1)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Model_Cook,<span class="at">type=</span><span class="st">"h"</span>, <span class="at">ylab=</span><span class="st">"Cook's Distance"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Week-2-Assignment_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>influential <span class="ot">&lt;-</span><span class="fu">as.numeric</span>(<span class="fu">names</span>(Model_Cook)[(Model_Cook<span class="sc">&gt;</span><span class="dv">1</span>)])</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>influential</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 29 42</code></pre>
+</div>
+</div>
+</section>
+<section id="your-code-for-question-5" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-question-5">Your code for Question 5</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fit regression model</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>mydata1a  <span class="ot">&lt;-</span> mydata_numeric[<span class="sc">-</span>influential,]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(mydata_numeric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 52 17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(mydata1a )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 50 17</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>model1a <span class="ot">&lt;-</span> <span class="fu">lm</span>(OwnComputer<span class="sc">~</span>Asians <span class="sc">+</span> PovertyRate <span class="sc">+</span> Income100K<span class="fl">.150</span>K, <span class="at">data=</span>mydata1a)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate residual standard error</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">deviance</span>(model1a)<span class="sc">/</span><span class="fu">df.residual</span>(model1a))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.571069</code></pre>
+</div>
+</div>
+</section>
+<section id="your-code-for-question-6" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-question-6">Your code for Question 6</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># model1 - Adjusted R-squared: 0.44</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># model1a - Adjusted R-squared:  0.7055</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = OwnComputer ~ Asians + PovertyRate + Income100K.150K, 
+    data = mydata_numeric)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.6545 -1.0858 -0.0344  1.0583  4.3388 
+
+Coefficients:
+                Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)     64.17600    4.92178  13.039  &lt; 2e-16 ***
+Asians          -0.03232    0.04379  -0.738   0.4641    
+PovertyRate      0.42075    0.12223   3.442   0.0012 ** 
+Income100K.150K  1.27555    0.23524   5.422 1.89e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.146 on 48 degrees of freedom
+Multiple R-squared:  0.4721,    Adjusted R-squared:  0.4391 
+F-statistic: 14.31 on 3 and 48 DF,  p-value: 8.663e-07</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = OwnComputer ~ Asians + PovertyRate + Income100K.150K, 
+    data = mydata1a)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.5527 -1.2783 -0.1263  0.7324  3.5709 
+
+Coefficients:
+                Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)     87.10517    5.00593  17.400   &lt;2e-16 ***
+Asians           0.24710    0.09073   2.724   0.0091 ** 
+PovertyRate     -0.41406    0.15584  -2.657   0.0108 *  
+Income100K.150K  0.40618    0.22052   1.842   0.0719 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.571 on 46 degrees of freedom
+Multiple R-squared:  0.7236,    Adjusted R-squared:  0.7055 
+F-statistic: 40.14 on 3 and 46 DF,  p-value: 6.759e-13</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Running Cooks again </span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>Model_Cook<span class="ot">&lt;-</span><span class="fu">cooks.distance</span>(model1a)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Model_Cook,<span class="at">type=</span><span class="st">"h"</span>, <span class="at">ylab=</span><span class="st">"Cook's Distance"</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Week-2-Assignment_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>influential <span class="ot">&lt;-</span><span class="fu">as.numeric</span>(<span class="fu">names</span>(Model_Cook)[(Model_Cook<span class="sc">&gt;</span><span class="dv">1</span>)])</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>influential</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>numeric(0)</code></pre>
+</div>
+</div>
+</section>
+<section id="your-code-for-question-7" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-question-7">Your code for Question 7</h2>
+<ul>
+<li><span class="math inline">\(Model ~~2: OwnComputer=\beta_{0}+\beta_{1}Asians+\beta_{2}{PovertyRate}+\beta_{3}Income100K.150K +\beta_{4}Income25K.35K+\beta_{5}SupplementarySecurityIncome+\beta_{6}WhiteOnly+\epsilon\)</span></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fit regression model</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(OwnComputer<span class="sc">~</span>Asians <span class="sc">+</span> PovertyRate <span class="sc">+</span> Income100K<span class="fl">.150</span>K <span class="sc">+</span> Income25K<span class="fl">.35</span>K <span class="sc">+</span> SupplementarySecurityIncome <span class="sc">+</span> WhiteOnly, <span class="at">data=</span>mydata1a)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = OwnComputer ~ Asians + PovertyRate + Income100K.150K + 
+    Income25K.35K + SupplementarySecurityIncome + WhiteOnly, 
+    data = mydata1a)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.66806 -1.00154 -0.01902  0.59293  2.93675 
+
+Coefficients:
+                             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 76.423639  12.744798   5.996  3.7e-07 ***
+Asians                       0.295970   0.106085   2.790  0.00783 ** 
+PovertyRate                 -0.024397   0.257830  -0.095  0.92505    
+Income100K.150K              0.780048   0.421143   1.852  0.07087 .  
+Income25K.35K                0.403698   0.557218   0.724  0.47269    
+SupplementarySecurityIncome -0.888772   0.302438  -2.939  0.00528 ** 
+WhiteOnly                    0.007306   0.030155   0.242  0.80972    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.388 on 43 degrees of freedom
+Multiple R-squared:  0.7984,    Adjusted R-squared:  0.7702 
+F-statistic: 28.38 on 6 and 43 DF,  p-value: 1.924e-13</code></pre>
+</div>
+</div>
+</section>
+<section id="your-code-for-question-8" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-question-8">Your code for Question 8</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     Asians                 PovertyRate 
+                   2.725824                   14.291210 
+            Income100K.150K               Income25K.35K 
+                  23.946871                   16.370464 
+SupplementarySecurityIncome                   WhiteOnly 
+                   3.274392                    5.136633 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create vector of VIF values</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>vif_values <span class="ot">&lt;-</span> <span class="fu">vif</span>(model2)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co">#create horizontal bar chart to display each VIF value</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(vif_values, <span class="at">main =</span> <span class="st">"VIF Values"</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"steelblue"</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co">#add vertical line at 5</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">5</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Week-2-Assignment_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="your-code-for-question-9" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-question-9">Your code for Question 9</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fit regression model</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(OwnComputer<span class="sc">~</span>Asians <span class="sc">+</span> SupplementarySecurityIncome <span class="sc">+</span> WhiteOnly, <span class="at">data=</span>mydata1a)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = OwnComputer ~ Asians + SupplementarySecurityIncome + 
+    WhiteOnly, data = mydata1a)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.5913 -1.2602 -0.2678  1.2015  3.8231 
+
+Coefficients:
+                            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 91.02986    2.04135  44.593  &lt; 2e-16 ***
+Asians                       0.54319    0.09169   5.924 3.76e-07 ***
+SupplementarySecurityIncome -1.46027    0.19816  -7.369 2.56e-09 ***
+WhiteOnly                    0.03948    0.01884   2.096   0.0417 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.61 on 46 degrees of freedom
+Multiple R-squared:  0.7098,    Adjusted R-squared:  0.6909 
+F-statistic:  37.5 on 3 and 46 DF,  p-value: 2.051e-12</code></pre>
+</div>
+</div>
+</section>
+<section id="your-code-for-question-10" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-question-10">Your code for Question 10</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(model1) # Adjusted R-squared:  0.4391 </span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(model1a) # Adjusted R-squared:  0.7055</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(model2) # Adjusted R-squared:  0.7702 </span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model3) <span class="co"># Adjusted R-squared:  0.6909</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = OwnComputer ~ Asians + SupplementarySecurityIncome + 
+    WhiteOnly, data = mydata1a)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.5913 -1.2602 -0.2678  1.2015  3.8231 
+
+Coefficients:
+                            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 91.02986    2.04135  44.593  &lt; 2e-16 ***
+Asians                       0.54319    0.09169   5.924 3.76e-07 ***
+SupplementarySecurityIncome -1.46027    0.19816  -7.369 2.56e-09 ***
+WhiteOnly                    0.03948    0.01884   2.096   0.0417 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.61 on 46 degrees of freedom
+Multiple R-squared:  0.7098,    Adjusted R-squared:  0.6909 
+F-statistic:  37.5 on 3 and 46 DF,  p-value: 2.051e-12</code></pre>
+</div>
+</div>
+</section>
+<section id="your-code-for-question-11" class="level2">
+<h2 class="anchored" data-anchor-id="your-code-for-question-11">Your code for Question 11</h2>
+<p>Consider the following scenario: Canada held a referendum to become the 51st state of the United States, and the US accepted their request with pleasure.”</p>
+<p>Use <strong>model2</strong> to predict the <strong>OwnComputer</strong> ratio in Canada with a 90% prediction interval.</p>
+<p>Hypothetical Data for Canada:</p>
+<p>Asians: 18.4</p>
+<p>PovertyRate: 5.8</p>
+<p>Income100K.150K: 23</p>
+<p>Income25K.35K: 13</p>
+<p>SupplementarySecurityIncome: 9</p>
+<p>WhiteOnly: 75</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>Canada <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Asians=</span><span class="fl">18.4</span>, <span class="at">PovertyRate=</span><span class="fl">5.8</span>, <span class="at">Income100K.150K=</span><span class="dv">23</span>, <span class="at">Income25K.35K=</span><span class="dv">13</span>, <span class="at">SupplementarySecurityIncome=</span><span class="dv">9</span>, <span class="at">WhiteOnly=</span><span class="dv">75</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">#fit regression model</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>modelCanada <span class="ot">&lt;-</span> <span class="fu">lm</span>(OwnComputer <span class="sc">~</span> Asians <span class="sc">+</span> PovertyRate <span class="sc">+</span> Income100K<span class="fl">.150</span>K <span class="sc">+</span> Income25K<span class="fl">.35</span>K <span class="sc">+</span> SupplementarySecurityIncome <span class="sc">+</span> WhiteOnly, <span class="at">data=</span>mydata1a)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="fu">predict.lm</span>(modelCanada, Canada ,<span class="at">interval=</span><span class="st">"prediction"</span>, <span class="at">level =</span> <span class="fl">0.90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       fit      lwr      upr
+1 97.46618 87.73019 107.2022</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(mydata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 52 18</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(mydata_numeric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 52 17</code></pre>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
